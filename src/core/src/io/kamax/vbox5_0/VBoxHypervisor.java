@@ -909,4 +909,10 @@ public abstract class VBoxHypervisor implements _Hypervisor {
       return logObj;
    }
 
+   @Override
+   public void importAppliance(String applianceFile) {
+      // TODO Auto-generated method stub
+
+   }
+
 }
