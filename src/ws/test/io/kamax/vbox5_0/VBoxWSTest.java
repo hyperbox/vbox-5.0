@@ -32,7 +32,7 @@ public class VBoxWSTest extends HypervisorTest {
       hypervisor = new VBoxWebServicesHypervisor();
       hypervisor.setEventManager(new DummyEventManager());
 
-      HypervisorTest.init("max-laptop");
+      HypervisorTest.init();
    }
 
 }
