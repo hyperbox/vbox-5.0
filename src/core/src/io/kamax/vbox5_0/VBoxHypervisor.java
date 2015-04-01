@@ -159,8 +159,8 @@ public abstract class VBoxHypervisor implements _Hypervisor {
       vbMgr = connect(options);
       VBox.set(vbMgr);
 
-      if (!VBox.get().getAPIVersion().contentEquals("4_4")) {
-         throw new HypervisorException("Missmatch API Connector: Server is " + VBox.get().getAPIVersion() + " but the connector handles 4_4");
+      if (!VBox.get().getAPIVersion().contentEquals("5_0")) {
+         throw new HypervisorException("Missmatch API Connector: Server is " + VBox.get().getAPIVersion() + " but the connector handles 5_0");
       }
 
       host = new VBoxHost(VBox.get().getHost());
