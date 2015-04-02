@@ -25,7 +25,6 @@ import org.altherian.hbox.exception.ConfigurationException;
 import org.altherian.setting._Setting;
 import org.altherian.vbox.settings.general.LocationSetting;
 import io.kamax.vbox5_0.setting._MachineSettingAction;
-import java.io.File;
 import org.virtualbox_5_0.IMachine;
 import org.virtualbox_5_0.LockType;
 
@@ -48,7 +47,7 @@ public class LocationSettingAction implements _MachineSettingAction {
 
    @Override
    public _Setting get(IMachine machine) {
-      return new LocationSetting(new File(machine.getSettingsFilePath()).getParentFile().getAbsolutePath());
+      return new LocationSetting(machine.getSettingsFilePath());
    }
 
 }
