@@ -1,0 +1,82 @@
+﻿<!--
+ * 
+ * Hyperbox - Virtual Infrastructure Manager
+ * Copyright (C) 2015 Maxime Dor
+ * 
+ * http://kamax.io/hbox/
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or 
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *  
+-->
+
+<project name="VirtualBox 5.0 - Server Hypervisor Module" default="build">
+	
+	<property file="build.properties" />
+	
+	<property name="api.lib.dir"									value="../hyperbox/src/api/lib" />
+	<property name="api.jar.file"									value="../hyperbox/out/build/jars/hbox-api.jar" />
+	<property name="srv.api.jar.file"								value="../hyperbox/out/build/jars/hbox-srv-api.jar" />
+	<property name="vbox.api.jar.file"								value="../hyperbox/out/build/jars/vbox-api.jar" />
+	<property name="srv.vbox.helper.jar.file"						value="../hyperbox/out/build/jars/hbox-srv-vb-helper.jar" />
+
+	<property name="src.dir"										value="src" />
+	<property name="lib.dir"										value="lib" />
+	<property name="out.dir"										value="out" />
+	
+	<property name="build.dir"										value="${out.dir}/build" />
+	<property name="build.class.dir"								value="${build.dir}/class" />
+	<property name="build.jar.dir"									value="${build.dir}/jar" />
+	
+	<property name="server.hyp.vbox.5_0.id"							value="vbox-5_0-core" />
+	<property name="server.hyp.vbox.5_0.dir"						value="${src.dir}/core" />
+	<property name="server.hyp.vbox.5_0.src.dir"					value="${server.hyp.vbox.5_0.dir}/${src.dir}" />
+	<property name="server.hyp.vbox.5_0.lib.dir"					value="${server.hyp.vbox.5_0.dir}/${lib.dir}" />
+	<property name="server.hyp.vbox.5_0.class.dir"					value="${build.class.dir}/${server.hyp.vbox.5_0.id}" />
+	<property name="server.hyp.vbox.5_0.jar.file"					value="${build.jar.dir}/${server.hyp.vbox.5_0.id}.jar" />
+	
+	<path id="server.hyp.vbox.5_0.classpath">
+		<pathelement location="${api.jar.file}" />
+		<pathelement location="${srv.api.jar.file}" />
+		<pathelement location="${vbox.api.jar.file}" />
+		<pathelement location="${srv.vbox.helper.jar.file}" />
+		
+		<fileset dir="${server.hyp.vbox.5_0.lib.dir}" includes="**/*.jar"/>
+		<fileset dir="${api.lib.dir}" includes="**/*.jar"/>
+	</path>
+		
+	<target name="clean">
+		<delete dir="${out.dir}"/>
+	</target>
+	
+	<target name="configure">
+		<exec executable="git" outputProperty="version">
+			<arg line="describe --always"/>
+		</exec>
+	</target>
+	
+	<target name="server.hyp.vbox.5_0.class">
+		<mkdir dir="${server.hyp.vbox.5_0.class.dir}" />
+
+		<javac source="1.6" target="1.6" debug="on" includeantruntime="false" srcdir="${server.hyp.vbox.5_0.src.dir}" destdir="${server.hyp.vbox.5_0.class.dir}" classpathref="server.hyp.vbox.5_0.classpath" />
+	</target>
+	
+	<target name="server.hyp.vbox.5_0.jar" depends="server.hyp.vbox.5_0.class">
+		<jar destfile="${server.hyp.vbox.5_0.jar.file}">
+			<fileset dir="${server.hyp.vbox.5_0.class.dir}" />
+		</jar>
+	</target>
+	
+	<extension-point name="build" depends="server.hyp.vbox.5_0.jar" />
+
+</project>
