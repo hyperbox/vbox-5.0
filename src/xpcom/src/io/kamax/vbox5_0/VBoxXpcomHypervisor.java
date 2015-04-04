@@ -18,7 +18,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.altherian.vbox5_0.xpcom;
+package io.kamax.vbox5_0;
 
 import org.altherian.hbox.exception.HypervisorException;
 import org.altherian.hboxd.hypervisor.Hypervisor;

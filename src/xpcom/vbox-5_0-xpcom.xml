@@ -1,8 +1,8 @@
 <module>
-	<id>vbox-5.0-xpcom</id>
-	<path>vbox-5.0-xpcom</path>
+	<id>vbox-5_0-xpcom</id>
+	<path>vbox-5_0-xpcom</path>
 	<name>Virtualbox 5.0 XPCOM Connector</name>
-	<desc>This module provides the universal XPCOM connector for VirtualBox 5.0.</desc>
+	<desc>This module provides the XPCOM connector for VirtualBox 5.0</desc>
 	<version>1</version>
 	<vendor>Kamax.io</vendor>
 	<url>http://kamax.io/hbox/</url>
