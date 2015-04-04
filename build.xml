@@ -35,6 +35,7 @@
 	<property name="out.dir"										value="out" />
 	
 	<property name="build.dir"										value="${out.dir}/build" />
+	<property name="build.bin.dir"									value="${build.dir}/bin" />
 	<property name="build.class.dir"								value="${build.dir}/class" />
 	<property name="build.jar.dir"									value="${build.dir}/jar" />
 	
@@ -50,12 +51,12 @@
 	
 	<!-- VirtualBox 5.0 Core connector ======================================================================================================================================================================== -->
 	
-	<property name="srv.hyp.vbox.5_0.id"						value="vbox-5_0-core" />
-	<property name="srv.hyp.vbox.5_0.dir"						value="${src.dir}/core" />
-	<property name="srv.hyp.vbox.5_0.src.dir"					value="${srv.hyp.vbox.5_0.dir}/${src.dir}" />
-	<property name="srv.hyp.vbox.5_0.lib.dir"					value="${srv.hyp.vbox.5_0.dir}/${lib.dir}" />
-	<property name="srv.hyp.vbox.5_0.class.dir"					value="${build.class.dir}/${srv.hyp.vbox.5_0.id}" />
-	<property name="srv.hyp.vbox.5_0.jar.file"					value="${build.jar.dir}/${srv.hyp.vbox.5_0.id}.jar" />
+	<property name="srv.hyp.vbox.5_0.id"							value="vbox-5_0-core" />
+	<property name="srv.hyp.vbox.5_0.dir"							value="${src.dir}/core" />
+	<property name="srv.hyp.vbox.5_0.src.dir"						value="${srv.hyp.vbox.5_0.dir}/${src.dir}" />
+	<property name="srv.hyp.vbox.5_0.lib.dir"						value="${srv.hyp.vbox.5_0.dir}/${lib.dir}" />
+	<property name="srv.hyp.vbox.5_0.class.dir"						value="${build.class.dir}/${srv.hyp.vbox.5_0.id}" />
+	<property name="srv.hyp.vbox.5_0.jar.file"						value="${build.jar.dir}/${srv.hyp.vbox.5_0.id}.jar" />
 	
 	<path id="srv.hyp.vbox.5_0.classpath">
 		<pathelement location="${api.jar.file}" />
@@ -84,17 +85,27 @@
 	<!-- VirtualBox 5.0 Web Services connector ================================================================================================================================================================ -->
 	
 	<property name="srv.hyp.vbox.5_0.ws.id"							value="vbox-5_0-ws" />
-	<property name="srv.hyp.vbox.5_0.ws.dir"						value="${src.dir}/ws" />
+	<property name="srv.hyp.vbox.5_0.ws.type"					 	value="ws" />
+	<property name="srv.hyp.vbox.5_0.ws.desc.filename"				value="${srv.hyp.vbox.5_0.ws.id}.xml" />
+	
+	<property name="srv.hyp.vbox.5_0.ws.dir"						value="${src.dir}/${srv.hyp.vbox.5_0.ws.type}" />
 	<property name="srv.hyp.vbox.5_0.ws.src.dir"					value="${srv.hyp.vbox.5_0.ws.dir}/${src.dir}" />
+	<property name="srv.hyp.vbox.5_0.ws.src.desc.file"				value="${srv.hyp.vbox.5_0.ws.dir}/${srv.hyp.vbox.5_0.ws.desc.filename}" />
 	<property name="srv.hyp.vbox.5_0.ws.lib.dir"					value="${srv.hyp.vbox.5_0.ws.dir}/${lib.dir}" />
 	<property name="srv.hyp.vbox.5_0.ws.class.dir"					value="${build.class.dir}/${srv.hyp.vbox.5_0.ws.id}" />
-	<property name="srv.hyp.vbox.5_0.ws.jar.file"					value="${build.jar.dir}/${srv.hyp.vbox.5_0.ws.id}.jar" />
+	<property name="srv.hyp.vbox.5_0.ws.bin.dir"					value="${build.bin.dir}/${srv.hyp.vbox.5_0.ws.type}" />
+	<property name="srv.hyp.vbox.5_0.ws.bin.desc.file"				value="${srv.hyp.vbox.5_0.ws.bin.dir}/${srv.hyp.vbox.5_0.ws.desc.filename}" />
+	<property name="srv.hyp.vbox.5_0.ws.bin.pkg.dir"				value="${build.bin.dir}/${srv.hyp.vbox.5_0.ws.type}/${srv.hyp.vbox.5_0.ws.id}" />
+	<property name="srv.hyp.vbox.5_0.ws.jar.filename"				value="${srv.hyp.vbox.5_0.ws.id}.jar" />
+	<property name="srv.hyp.vbox.5_0.ws.jar.file"					value="${build.jar.dir}/${srv.hyp.vbox.5_0.ws.jar.filename}" />
+	<property name="srv.hyp.vbox.5_0.ws.bin.jar.file"				value="${srv.hyp.vbox.5_0.ws.bin.pkg.dir}/${srv.hyp.vbox.5_0.ws.jar.filename}" />
 	
 	<path id="srv.hyp.vbox.5_0.ws.classpath">
 		<pathelement location="${api.jar.file}" />
 		<pathelement location="${srv.api.jar.file}" />
 		<pathelement location="${vbox.api.jar.file}" />
 		<pathelement location="${srv.vbox.helper.jar.file}" />
+		<pathelement location="${srv.hyp.vbox.5_0.jar.file}" />
 		<pathelement location="${srv.hyp.vbox.5_0.jar.file}" />
 		
 		<fileset dir="${srv.hyp.vbox.5_0.ws.lib.dir}" includes="**/*.jar"/>
@@ -113,8 +124,17 @@
 		</jar>
 	</target>
 	
+	<target name="srv.hyp.vbox.5_0.ws.build" depends="srv.hyp.vbox.5_0.ws.jar">
+		<mkdir dir="${srv.hyp.vbox.5_0.ws.bin.pkg.dir}" />
+		<copy file="${srv.hyp.vbox.5_0.ws.src.desc.file}" tofile="${srv.hyp.vbox.5_0.ws.bin.desc.file}" />
+		<copy file="${srv.hyp.vbox.5_0.ws.jar.file}" tofile="${srv.hyp.vbox.5_0.ws.bin.jar.file}" />
+		<copy todir="${srv.hyp.vbox.5_0.ws.bin.pkg.dir}" flatten="true">
+			<fileset dir="${srv.hyp.vbox.5_0.ws.lib.dir}" includes="**/*.jar" />
+		</copy>
+	</target>
+	
 	<!-- ====================================================================================================================================================================================================== -->
 	
-	<extension-point name="build" depends="srv.hyp.vbox.5_0.jar, srv.hyp.vbox.5_0.ws.jar" />
+	<extension-point name="build" depends="srv.hyp.vbox.5_0.jar, srv.hyp.vbox.5_0.ws.build" />
 
 </project>
