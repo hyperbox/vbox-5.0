@@ -20,7 +20,7 @@
  *  
 -->
 
-<project name="VirtualBox 5.0 - Server Hypervisor Module" default="build">
+<project name="VirtualBox 5.0 - Server Hypervisor Module" default="dist">
 	
 	<property file="build.properties" />
 	
@@ -35,9 +35,12 @@
 	<property name="out.dir"										value="out" />
 	
 	<property name="build.dir"										value="${out.dir}/build" />
-	<property name="build.bin.dir"									value="${build.dir}/bin" />
 	<property name="build.class.dir"								value="${build.dir}/class" />
 	<property name="build.jar.dir"									value="${build.dir}/jar" />
+	
+	<property name="bin.dir"										value="${out.dir}/bin" />
+	
+	<property name="dist.dir"										value="${out.dir}/dist" />
 	
 	<target name="clean">
 		<delete dir="${out.dir}"/>
@@ -87,18 +90,21 @@
 	<property name="srv.hyp.vbox.5_0.ws.id"							value="vbox-5_0-ws" />
 	<property name="srv.hyp.vbox.5_0.ws.type"					 	value="ws" />
 	<property name="srv.hyp.vbox.5_0.ws.desc.filename"				value="${srv.hyp.vbox.5_0.ws.id}.xml" />
+	<property name="srv.hyp.vbox.5_0.ws.dist.zip.filename"			value="${srv.hyp.vbox.5_0.ws.id}.zip" />
 	
 	<property name="srv.hyp.vbox.5_0.ws.dir"						value="${src.dir}/${srv.hyp.vbox.5_0.ws.type}" />
 	<property name="srv.hyp.vbox.5_0.ws.src.dir"					value="${srv.hyp.vbox.5_0.ws.dir}/${src.dir}" />
 	<property name="srv.hyp.vbox.5_0.ws.src.desc.file"				value="${srv.hyp.vbox.5_0.ws.dir}/${srv.hyp.vbox.5_0.ws.desc.filename}" />
 	<property name="srv.hyp.vbox.5_0.ws.lib.dir"					value="${srv.hyp.vbox.5_0.ws.dir}/${lib.dir}" />
 	<property name="srv.hyp.vbox.5_0.ws.class.dir"					value="${build.class.dir}/${srv.hyp.vbox.5_0.ws.id}" />
-	<property name="srv.hyp.vbox.5_0.ws.bin.dir"					value="${build.bin.dir}/${srv.hyp.vbox.5_0.ws.type}" />
+	<property name="srv.hyp.vbox.5_0.ws.bin.dir"					value="${bin.dir}/${srv.hyp.vbox.5_0.ws.type}" />
 	<property name="srv.hyp.vbox.5_0.ws.bin.desc.file"				value="${srv.hyp.vbox.5_0.ws.bin.dir}/${srv.hyp.vbox.5_0.ws.desc.filename}" />
-	<property name="srv.hyp.vbox.5_0.ws.bin.pkg.dir"				value="${build.bin.dir}/${srv.hyp.vbox.5_0.ws.type}/${srv.hyp.vbox.5_0.ws.id}" />
+	<property name="srv.hyp.vbox.5_0.ws.bin.pkg.dir"				value="${bin.dir}/${srv.hyp.vbox.5_0.ws.type}/${srv.hyp.vbox.5_0.ws.id}" />
 	<property name="srv.hyp.vbox.5_0.ws.jar.filename"				value="${srv.hyp.vbox.5_0.ws.id}.jar" />
 	<property name="srv.hyp.vbox.5_0.ws.jar.file"					value="${build.jar.dir}/${srv.hyp.vbox.5_0.ws.jar.filename}" />
 	<property name="srv.hyp.vbox.5_0.ws.bin.jar.file"				value="${srv.hyp.vbox.5_0.ws.bin.pkg.dir}/${srv.hyp.vbox.5_0.ws.jar.filename}" />
+	<property name="srv.hyp.vbox.5_0.ws.dist.zip.file"				value="${dist.dir}/${srv.hyp.vbox.5_0.ws.dist.zip.filename}" />
+	
 	
 	<path id="srv.hyp.vbox.5_0.ws.classpath">
 		<pathelement location="${api.jar.file}" />
@@ -133,8 +139,17 @@
 		</copy>
 	</target>
 	
+	<target name="srv.hyp.vbox.5_0.ws.dist" depends="srv.hyp.vbox.5_0.ws.build">
+		<mkdir dir="${dist.dir}" />
+		<zip destfile="${srv.hyp.vbox.5_0.ws.dist.zip.file}">
+			<fileset dir="${srv.hyp.vbox.5_0.ws.bin.dir}" />
+		</zip>
+	</target>
+	
 	<!-- ====================================================================================================================================================================================================== -->
 	
 	<extension-point name="build" depends="srv.hyp.vbox.5_0.jar, srv.hyp.vbox.5_0.ws.build" />
+	
+	<extension-point name="dist" depends="srv.hyp.vbox.5_0.jar, srv.hyp.vbox.5_0.ws.dist" />
 
 </project>
