@@ -117,7 +117,7 @@
 		<fileset dir="${srv.hyp.vbox.5_0.ws.lib.dir}" includes="**/*.jar"/>
 	</path>
 	
-	<target name="srv.hyp.vbox.5_0.ws.class">
+	<target name="srv.hyp.vbox.5_0.ws.class" depends="srv.hyp.vbox.5_0.jar">
 		<mkdir dir="${srv.hyp.vbox.5_0.ws.class.dir}" />
 
 		<javac source="1.6" target="1.6" debug="on" includeantruntime="false" srcdir="${srv.hyp.vbox.5_0.ws.src.dir}" destdir="${srv.hyp.vbox.5_0.ws.class.dir}" classpathref="srv.hyp.vbox.5_0.ws.classpath" />
@@ -178,7 +178,7 @@
 		<fileset dir="${srv.hyp.vbox.5_0.xpcom.lib.dir}" includes="**/*.jar"/>
 	</path>
 	
-	<target name="srv.hyp.vbox.5_0.xpcom.class">
+	<target name="srv.hyp.vbox.5_0.xpcom.class" depends="srv.hyp.vbox.5_0.jar">
 		<mkdir dir="${srv.hyp.vbox.5_0.xpcom.class.dir}" />
 
 		<javac source="1.6" target="1.6" debug="on" includeantruntime="false" srcdir="${srv.hyp.vbox.5_0.xpcom.src.dir}" destdir="${srv.hyp.vbox.5_0.xpcom.class.dir}" classpathref="srv.hyp.vbox.5_0.xpcom.classpath" />
@@ -211,8 +211,12 @@
 	
 	<!-- ====================================================================================================================================================================================================== -->
 	
-	<extension-point name="build" depends="srv.hyp.vbox.5_0.jar, srv.hyp.vbox.5_0.ws.build, srv.hyp.vbox.5_0.xpcom.build" />
+	<extension-point name="class" depends="srv.hyp.vbox.5_0.ws.class, srv.hyp.vbox.5_0.xpcom.class" />
 	
-	<extension-point name="dist" depends="srv.hyp.vbox.5_0.jar, srv.hyp.vbox.5_0.ws.dist, srv.hyp.vbox.5_0.xpcom.dist" />
+	<extension-point name="jar" depends="srv.hyp.vbox.5_0.ws.jar, srv.hyp.vbox.5_0.xpcom.jar" />
+	
+	<extension-point name="build" depends="srv.hyp.vbox.5_0.ws.build, srv.hyp.vbox.5_0.xpcom.build" />
+	
+	<extension-point name="dist" depends="srv.hyp.vbox.5_0.ws.dist, srv.hyp.vbox.5_0.xpcom.dist" />
 
 </project>
