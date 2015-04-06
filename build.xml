@@ -20,7 +20,7 @@
  *  
 -->
 
-<project name="VirtualBox 5.0 - Server Hypervisor Module" default="dist">
+<project name="VirtualBox 5.0 - Server Hypervisor Modules" default="dist">
 	
 	<property file="build.properties" />
 	
@@ -132,6 +132,9 @@
 	<target name="srv.hyp.vbox.5_0.ws.build" depends="srv.hyp.vbox.5_0.ws.jar">
 		<mkdir dir="${srv.hyp.vbox.5_0.ws.bin.pkg.dir}" />
 		<copy file="${srv.hyp.vbox.5_0.ws.src.desc.file}" tofile="${srv.hyp.vbox.5_0.ws.bin.desc.file}" />
+		<copy file="${vbox.api.jar.file}" todir="${srv.hyp.vbox.5_0.ws.bin.pkg.dir}" />
+		<copy file="${srv.vbox.helper.jar.file}" todir="${srv.hyp.vbox.5_0.ws.bin.pkg.dir}" />
+		<copy file="${srv.hyp.vbox.5_0.jar.file}" todir="${srv.hyp.vbox.5_0.ws.bin.pkg.dir}" />
 		<copy file="${srv.hyp.vbox.5_0.ws.jar.file}" tofile="${srv.hyp.vbox.5_0.ws.bin.jar.file}" />
 		<copy todir="${srv.hyp.vbox.5_0.ws.bin.pkg.dir}" flatten="true">
 			<fileset dir="${srv.hyp.vbox.5_0.ws.lib.dir}" includes="**/*.jar" />
@@ -190,6 +193,9 @@
 	<target name="srv.hyp.vbox.5_0.xpcom.build" depends="srv.hyp.vbox.5_0.xpcom.jar">
 		<mkdir dir="${srv.hyp.vbox.5_0.xpcom.bin.pkg.dir}" />
 		<copy file="${srv.hyp.vbox.5_0.xpcom.src.desc.file}" tofile="${srv.hyp.vbox.5_0.xpcom.bin.desc.file}" />
+		<copy file="${vbox.api.jar.file}" todir="${srv.hyp.vbox.5_0.xpcom.bin.pkg.dir}" />
+		<copy file="${srv.vbox.helper.jar.file}" todir="${srv.hyp.vbox.5_0.xpcom.bin.pkg.dir}" />
+		<copy file="${srv.hyp.vbox.5_0.jar.file}" todir="${srv.hyp.vbox.5_0.xpcom.bin.pkg.dir}" />
 		<copy file="${srv.hyp.vbox.5_0.xpcom.jar.file}" tofile="${srv.hyp.vbox.5_0.xpcom.bin.jar.file}" />
 		<copy todir="${srv.hyp.vbox.5_0.xpcom.bin.pkg.dir}" flatten="true">
 			<fileset dir="${srv.hyp.vbox.5_0.xpcom.lib.dir}" includes="**/*.jar" />
