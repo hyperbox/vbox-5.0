@@ -58,7 +58,7 @@ import org.altherian.setting.StringSetting;
 import org.altherian.setting._Setting;
 import org.altherian.tool.AxStrings;
 import org.altherian.tool.logging.Logger;
-import org.altherian.vbox.net.VBoxAdaptor;
+import io.kamax.vbox.net.VBoxAdaptor;
 import io.kamax.vbox5_0.data.Mappings;
 import io.kamax.vbox5_0.factory.OsTypeFactory;
 import io.kamax.vbox5_0.host.VBoxHost;

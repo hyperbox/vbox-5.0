@@ -30,7 +30,7 @@ import org.altherian.hbox.comm.io.NetService_NAT_IP6_IO;
 import org.altherian.hbox.constant.NetServiceType;
 import org.altherian.hbox.hypervisor.net._NetService;
 import org.altherian.tool.logging.Logger;
-import org.altherian.vbox.net.VBoxAdaptor;
+import io.kamax.vbox.net.VBoxAdaptor;
 import io.kamax.vbox5_0.VBox;
 import org.virtualbox_5_0.INATNetwork;
 

@@ -23,7 +23,7 @@ package io.kamax.vbox5_0.setting.audio;
 import org.altherian.hbox.constant.MachineAttribute;
 import org.altherian.setting.BooleanSetting;
 import org.altherian.setting._Setting;
-import org.altherian.vbox.settings.audio.AudioEnabled;
+import io.kamax.vbox.settings.audio.AudioEnabled;
 import io.kamax.vbox5_0.setting._MachineSettingAction;
 import org.virtualbox_5_0.IMachine;
 import org.virtualbox_5_0.LockType;

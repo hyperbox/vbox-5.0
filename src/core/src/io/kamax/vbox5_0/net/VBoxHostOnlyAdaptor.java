@@ -29,7 +29,7 @@ import org.altherian.hbox.hypervisor.net._NetService;
 import org.altherian.hbox.hypervisor.net._NetService_IP4;
 import org.altherian.hbox.hypervisor.net._NetService_IP4_DHCP;
 import org.altherian.hbox.hypervisor.net._NetService_IP6;
-import org.altherian.vbox.net.VBoxAdaptor;
+import io.kamax.vbox.net.VBoxAdaptor;
 import io.kamax.vbox5_0.VBox;
 import org.virtualbox_5_0.HostNetworkInterfaceStatus;
 import org.virtualbox_5_0.IDHCPServer;

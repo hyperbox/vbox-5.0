@@ -24,7 +24,7 @@ import org.altherian.hbox.exception.HypervisorException;
 import org.altherian.hboxd.hypervisor.Hypervisor;
 import org.altherian.tool.AxStrings;
 import org.altherian.tool.logging.Logger;
-import org.altherian.vbox.VirtualBox;
+import io.kamax.vbox.VirtualBox;
 import java.net.URI;
 import java.net.URISyntaxException;
 import org.virtualbox_5_0.VBoxException;
