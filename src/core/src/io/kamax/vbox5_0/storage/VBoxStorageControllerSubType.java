@@ -20,7 +20,7 @@
 
 package io.kamax.vbox5_0.storage;
 
-import org.altherian.hboxd.hypervisor.storage._RawStorageControllerSubType;
+import io.kamax.hboxd.hypervisor.storage._RawStorageControllerSubType;
 
 public enum VBoxStorageControllerSubType implements _RawStorageControllerSubType {
 

@@ -20,9 +20,9 @@
 
 package io.kamax.vbox5_0.factory.event;
 
-import org.altherian.hbox.event._Event;
-import org.altherian.hboxd.event.machine.MachineSnapshotDataChangedEvent;
-import org.altherian.hboxd.event.snapshot.SnapshotChangedEvent;
+import io.kamax.hbox.event._Event;
+import io.kamax.hboxd.event.machine.MachineSnapshotDataChangedEvent;
+import io.kamax.hboxd.event.snapshot.SnapshotChangedEvent;
 import io.kamax.vbox5_0.VBox;
 import io.kamax.vbox5_0.factory._PreciseEventFactory;
 import org.virtualbox_5_0.IEvent;

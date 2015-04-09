@@ -20,8 +20,8 @@
 
 package io.kamax.vbox5_0.setting.network;
 
-import org.altherian.hbox.constant.NetworkInterfaceAttribute;
-import org.altherian.setting._Setting;
+import io.kamax.hbox.constant.NetworkInterfaceAttribute;
+import io.kamax.setting._Setting;
 import io.kamax.vbox.settings.network.NicAttachNameSetting;
 import io.kamax.vbox5_0.setting._NetworkInterfaceSettingAction;
 import org.virtualbox_5_0.INetworkAdapter;

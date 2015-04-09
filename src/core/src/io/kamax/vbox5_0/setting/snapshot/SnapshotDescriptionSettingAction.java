@@ -20,9 +20,9 @@
 
 package io.kamax.vbox5_0.setting.snapshot;
 
-import org.altherian.hbox.constant.SnapshotAttribute;
-import org.altherian.setting.StringSetting;
-import org.altherian.setting._Setting;
+import io.kamax.hbox.constant.SnapshotAttribute;
+import io.kamax.setting.StringSetting;
+import io.kamax.setting._Setting;
 import io.kamax.vbox5_0.setting._SnapshotSettingAction;
 import org.virtualbox_5_0.ISnapshot;
 import org.virtualbox_5_0.LockType;

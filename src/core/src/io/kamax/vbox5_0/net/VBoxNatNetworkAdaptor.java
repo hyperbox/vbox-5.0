@@ -20,16 +20,16 @@
 
 package io.kamax.vbox5_0.net;
 
-import org.altherian.hbox.comm.io.NATRuleIO;
-import org.altherian.hbox.comm.io.NetService_DHCP_IP4_IO;
-import org.altherian.hbox.comm.io.NetService_IP4_CIDR_IO;
-import org.altherian.hbox.comm.io.NetService_IP6_Gateway_IO;
-import org.altherian.hbox.comm.io.NetService_IP6_IO;
-import org.altherian.hbox.comm.io.NetService_NAT_IP4_IO;
-import org.altherian.hbox.comm.io.NetService_NAT_IP6_IO;
-import org.altherian.hbox.constant.NetServiceType;
-import org.altherian.hbox.hypervisor.net._NetService;
-import org.altherian.tool.logging.Logger;
+import io.kamax.hbox.comm.io.NATRuleIO;
+import io.kamax.hbox.comm.io.NetService_DHCP_IP4_IO;
+import io.kamax.hbox.comm.io.NetService_IP4_CIDR_IO;
+import io.kamax.hbox.comm.io.NetService_IP6_Gateway_IO;
+import io.kamax.hbox.comm.io.NetService_IP6_IO;
+import io.kamax.hbox.comm.io.NetService_NAT_IP4_IO;
+import io.kamax.hbox.comm.io.NetService_NAT_IP6_IO;
+import io.kamax.hbox.constant.NetServiceType;
+import io.kamax.hbox.hypervisor.net._NetService;
+import io.kamax.tool.logging.Logger;
 import io.kamax.vbox.net.VBoxAdaptor;
 import io.kamax.vbox5_0.VBox;
 import org.virtualbox_5_0.INATNetwork;

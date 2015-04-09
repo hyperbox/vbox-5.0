@@ -20,9 +20,9 @@
 
 package io.kamax.vbox5_0.setting.cpu;
 
-import org.altherian.hbox.constant.MachineAttribute;
-import org.altherian.setting.PositiveNumberSetting;
-import org.altherian.setting._Setting;
+import io.kamax.hbox.constant.MachineAttribute;
+import io.kamax.setting.PositiveNumberSetting;
+import io.kamax.setting._Setting;
 import io.kamax.vbox.settings.cpu.CpuExecCapSetting;
 import io.kamax.vbox5_0.setting._MachineSettingAction;
 import org.virtualbox_5_0.IMachine;

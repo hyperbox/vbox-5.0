@@ -20,10 +20,10 @@
 
 package io.kamax.vbox5_0.setting.console;
 
-import org.altherian.hbox.constant.MachineAttribute;
-import org.altherian.hboxd.exception.machine.MachineLockingException;
-import org.altherian.setting.StringSetting;
-import org.altherian.setting._Setting;
+import io.kamax.hbox.constant.MachineAttribute;
+import io.kamax.hboxd.exception.machine.MachineLockingException;
+import io.kamax.setting.StringSetting;
+import io.kamax.setting._Setting;
 import io.kamax.vbox5_0.manager.VBoxSessionManager;
 import io.kamax.vbox5_0.setting._MachineSettingAction;
 import org.virtualbox_5_0.IMachine;

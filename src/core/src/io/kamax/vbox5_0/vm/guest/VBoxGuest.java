@@ -20,11 +20,11 @@
 
 package io.kamax.vbox5_0.vm.guest;
 
-import org.altherian.hbox.exception.HyperboxException;
-import org.altherian.hboxd.hypervisor.vm.guest._RawGuest;
-import org.altherian.hboxd.hypervisor.vm.guest._RawGuestNetworkInterface;
-import org.altherian.hboxd.hypervisor.vm.guest._RawHypervisorTools;
-import org.altherian.tool.AxStrings;
+import io.kamax.hbox.exception.HyperboxException;
+import io.kamax.hboxd.hypervisor.vm.guest._RawGuest;
+import io.kamax.hboxd.hypervisor.vm.guest._RawGuestNetworkInterface;
+import io.kamax.hboxd.hypervisor.vm.guest._RawHypervisorTools;
+import io.kamax.tool.AxStrings;
 import io.kamax.vbox5_0.VBox;
 import io.kamax.vbox5_0.manager.VBoxSessionManager;
 import io.kamax.vbox5_0.vm.VBoxMachine;

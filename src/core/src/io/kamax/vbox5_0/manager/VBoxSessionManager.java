@@ -21,8 +21,8 @@
 package io.kamax.vbox5_0.manager;
 
 import net.engio.mbassy.listener.Handler;
-import org.altherian.hboxd.exception.machine.MachineLockingException;
-import org.altherian.tool.logging.Logger;
+import io.kamax.hboxd.exception.machine.MachineLockingException;
+import io.kamax.tool.logging.Logger;
 import io.kamax.vbox.utils.EventBusFactory;
 import io.kamax.vbox5_0.VBox;
 import java.util.HashMap;

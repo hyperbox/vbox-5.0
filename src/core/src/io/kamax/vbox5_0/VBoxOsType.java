@@ -20,7 +20,7 @@
 
 package io.kamax.vbox5_0;
 
-import org.altherian.hboxd.hypervisor._RawOsType;
+import io.kamax.hboxd.hypervisor._RawOsType;
 import org.virtualbox_5_0.IGuestOSType;
 
 public class VBoxOsType implements _RawOsType {

@@ -20,8 +20,8 @@
 
 package io.kamax.vbox5_0.net;
 
-import org.altherian.hbox.exception.HyperboxException;
-import org.altherian.hbox.hypervisor.net._NetService;
+import io.kamax.hbox.exception.HyperboxException;
+import io.kamax.hbox.hypervisor.net._NetService;
 import io.kamax.vbox.net.VBoxAdaptor;
 import org.virtualbox_5_0.HostNetworkInterfaceStatus;
 import org.virtualbox_5_0.IHostNetworkInterface;

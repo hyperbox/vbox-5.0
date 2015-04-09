@@ -20,7 +20,7 @@
 
 package io.kamax.vbox5_0;
 
-import org.altherian.hbox.exception.HypervisorException;
+import io.kamax.hbox.exception.HypervisorException;
 import org.virtualbox_5_0.VBoxException;
 
 public class ErrorInterpreter {

@@ -20,9 +20,9 @@
 
 package io.kamax.vbox5_0.setting.machine;
 
-import org.altherian.hbox.constant.KeyboardMode;
-import org.altherian.hbox.constant.MachineAttribute;
-import org.altherian.setting._Setting;
+import io.kamax.hbox.constant.KeyboardMode;
+import io.kamax.hbox.constant.MachineAttribute;
+import io.kamax.setting._Setting;
 import io.kamax.vbox.settings.general.KeyboardModeSetting;
 import io.kamax.vbox5_0.data.Mappings;
 import io.kamax.vbox5_0.setting._MachineSettingAction;

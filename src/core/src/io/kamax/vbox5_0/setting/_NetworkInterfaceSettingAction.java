@@ -20,7 +20,7 @@
 
 package io.kamax.vbox5_0.setting;
 
-import org.altherian.setting._Setting;
+import io.kamax.setting._Setting;
 import org.virtualbox_5_0.INetworkAdapter;
 import org.virtualbox_5_0.LockType;
 
