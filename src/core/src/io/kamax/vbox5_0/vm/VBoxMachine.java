@@ -57,6 +57,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import org.virtualbox_5_0.Holder;
 import org.virtualbox_5_0.IMachine;
 import org.virtualbox_5_0.IProgress;
 import org.virtualbox_5_0.ISession;
@@ -295,7 +296,7 @@ public final class VBoxMachine implements _RawVM {
 
       try {
          lockAuto();
-         IProgress p = session.getConsole().saveState();
+         IProgress p = session.getMachine().saveState();
          while (!p.getCompleted() || p.getCanceled()) {
             try {
                Thread.sleep(Math.abs(p.getTimeRemaining()) * waitingCoef);
@@ -525,7 +526,8 @@ public final class VBoxMachine implements _RawVM {
 
       lockAuto();
       try {
-         IProgress p = session.getConsole().takeSnapshot(name, description);
+         Holder<String> snapId = new Holder<String>();
+         IProgress p = session.getMachine().takeSnapshot(name, description, true, snapId);
          while (!p.getCompleted() || p.getCanceled()) {
             try {
                Thread.sleep(Math.abs(p.getTimeRemaining()) * waitingCoef);
@@ -535,7 +537,7 @@ public final class VBoxMachine implements _RawVM {
          }
          Logger.debug("Return code : " + p.getResultCode());
          if (p.getResultCode() == 0) {
-            return getSnapshot(name);
+            return getSnapshot(snapId.value);
          } else {
             throw new MachineException(p.getErrorInfo().getText());
          }
@@ -551,7 +553,7 @@ public final class VBoxMachine implements _RawVM {
 
       lockAuto();
       try {
-         IProgress p = session.getConsole().deleteSnapshot(id);
+         IProgress p = session.getMachine().deleteSnapshot(id);
          while (!p.getCompleted() || p.getCanceled()) {
             try {
                Thread.sleep(Math.abs(p.getTimeRemaining()) * waitingCoef);
@@ -576,7 +578,7 @@ public final class VBoxMachine implements _RawVM {
       lockAuto();
       try {
          ISnapshot snapshot = getRaw().findSnapshot(id);
-         IProgress p = session.getConsole().restoreSnapshot(snapshot);
+         IProgress p = session.getMachine().restoreSnapshot(snapshot);
          while (!p.getCompleted() || p.getCanceled()) {
             try {
                Thread.sleep(Math.abs(p.getTimeRemaining()) * waitingCoef);
