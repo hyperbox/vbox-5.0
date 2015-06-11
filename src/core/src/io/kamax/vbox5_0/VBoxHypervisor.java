@@ -159,7 +159,7 @@ public abstract class VBoxHypervisor implements _Hypervisor {
       vbMgr = connect(options);
       VBox.set(vbMgr);
 
-      Logger.info("Connected in " + (System.currentTimeMillis() - start) + "ms to " + host.getHostname());
+      Logger.info("Connected in " + (System.currentTimeMillis() - start) + "ms to " + VBox.get().getHost().getDomainName());
       Logger.info("VB Version: " + vbMgr.getVBox().getVersion());
       Logger.info("VB Revision: " + vbMgr.getVBox().getRevision());
       Logger.info("VB Client API Version: " + vbMgr.getClientAPIVersion());
