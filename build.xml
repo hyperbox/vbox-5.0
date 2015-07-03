@@ -20,7 +20,7 @@
  *  
 -->
 
-<project name="VirtualBox 5.0 - Server Hypervisor Modules" default="dist">
+<project name="VirtualBox 5.0 - Hypervisor Modules" default="dist">
 	
 	<property file="build.properties" />
 	
@@ -34,16 +34,16 @@
 	<property name="lib.dir"										value="lib" />
 	<property name="out.dir"										value="out" />
 	
-	<property name="build.dir"										value="${out.dir}/build" />
+	<property name="build.dir"										value="${out.dirname}/build" />
 	<property name="build.class.dir"								value="${build.dir}/class" />
 	<property name="build.jar.dir"									value="${build.dir}/jar" />
 	
-	<property name="bin.dir"										value="${out.dir}/bin" />
+	<property name="bin.dir"										value="${out.dirname}/bin" />
 	
-	<property name="dist.dir"										value="${out.dir}/dist" />
+	<property name="dist.dir"										value="${out.dirname}/dist" />
 	
 	<target name="clean">
-		<delete dir="${out.dir}"/>
+		<delete dir="${out.dirname}"/>
 	</target>
 	
 	<target name="configure">
@@ -59,9 +59,9 @@
 	<property name="srv.hyp.vbox.5_0.hyp.conn"						value="core" />
 	<property name="srv.hyp.vbox.5_0.hyp.id"						value="${srv.hyp.vbox.5_0.hyp.type}-${srv.hyp.vbox.5_0.hyp.api}" />
 	<property name="srv.hyp.vbox.5_0.id"							value="${srv.hyp.vbox.5_0.hyp.id}-${srv.hyp.vbox.5_0.hyp.conn}" />
-	<property name="srv.hyp.vbox.5_0.dir"							value="${src.dir}/core" />
-	<property name="srv.hyp.vbox.5_0.src.dir"						value="${srv.hyp.vbox.5_0.dir}/${src.dir}" />
-	<property name="srv.hyp.vbox.5_0.lib.dir"						value="${srv.hyp.vbox.5_0.dir}/${lib.dir}" />
+	<property name="srv.hyp.vbox.5_0.dir"							value="${src.dirname}/core" />
+	<property name="srv.hyp.vbox.5_0.src.dir"						value="${srv.hyp.vbox.5_0.dir}/${src.dirname}" />
+	<property name="srv.hyp.vbox.5_0.lib.dir"						value="${srv.hyp.vbox.5_0.dir}/${lib.dirname}" />
 	<property name="srv.hyp.vbox.5_0.class.dir"						value="${build.class.dir}/${srv.hyp.vbox.5_0.id}" />
 	<property name="srv.hyp.vbox.5_0.jar.file"						value="${build.jar.dir}/${srv.hyp.vbox.5_0.id}.jar" />
 	
@@ -97,10 +97,10 @@
 	<property name="srv.hyp.vbox.5_0.ws.desc.filename"				value="${srv.hyp.vbox.5_0.ws.id}.xml" />
 	<property name="srv.hyp.vbox.5_0.ws.dist.zip.filename"			value="${srv.hyp.vbox.5_0.ws.id}.zip" />
 	
-	<property name="srv.hyp.vbox.5_0.ws.dir"						value="${src.dir}/${srv.hyp.vbox.5_0.ws.type}" />
-	<property name="srv.hyp.vbox.5_0.ws.src.dir"					value="${srv.hyp.vbox.5_0.ws.dir}/${src.dir}" />
+	<property name="srv.hyp.vbox.5_0.ws.dir"						value="${src.dirname}/${srv.hyp.vbox.5_0.ws.type}" />
+	<property name="srv.hyp.vbox.5_0.ws.src.dir"					value="${srv.hyp.vbox.5_0.ws.dir}/${src.dirname}" />
 	<property name="srv.hyp.vbox.5_0.ws.src.desc.file"				value="${srv.hyp.vbox.5_0.ws.dir}/${srv.hyp.vbox.5_0.ws.desc.filename}" />
-	<property name="srv.hyp.vbox.5_0.ws.lib.dir"					value="${srv.hyp.vbox.5_0.ws.dir}/${lib.dir}" />
+	<property name="srv.hyp.vbox.5_0.ws.lib.dir"					value="${srv.hyp.vbox.5_0.ws.dir}/${lib.dirname}" />
 	<property name="srv.hyp.vbox.5_0.ws.class.dir"					value="${build.class.dir}/${srv.hyp.vbox.5_0.ws.id}" />
 	<property name="srv.hyp.vbox.5_0.ws.bin.dir"					value="${bin.dir}/${srv.hyp.vbox.5_0.ws.type}" />
 	<property name="srv.hyp.vbox.5_0.ws.bin.desc.file"				value="${srv.hyp.vbox.5_0.ws.bin.dir}/${srv.hyp.vbox.5_0.ws.desc.filename}" />
@@ -158,10 +158,10 @@
 	<property name="srv.hyp.vbox.5_0.xpcom.desc.filename"			value="${srv.hyp.vbox.5_0.xpcom.id}.xml" />
 	<property name="srv.hyp.vbox.5_0.xpcom.dist.zip.filename"		value="${srv.hyp.vbox.5_0.xpcom.id}.zip" />
 	
-	<property name="srv.hyp.vbox.5_0.xpcom.dir"						value="${src.dir}/${srv.hyp.vbox.5_0.xpcom.type}" />
-	<property name="srv.hyp.vbox.5_0.xpcom.src.dir"					value="${srv.hyp.vbox.5_0.xpcom.dir}/${src.dir}" />
+	<property name="srv.hyp.vbox.5_0.xpcom.dir"						value="${src.dirname}/${srv.hyp.vbox.5_0.xpcom.type}" />
+	<property name="srv.hyp.vbox.5_0.xpcom.src.dir"					value="${srv.hyp.vbox.5_0.xpcom.dir}/${src.dirname}" />
 	<property name="srv.hyp.vbox.5_0.xpcom.src.desc.file"			value="${srv.hyp.vbox.5_0.xpcom.dir}/${srv.hyp.vbox.5_0.xpcom.desc.filename}" />
-	<property name="srv.hyp.vbox.5_0.xpcom.lib.dir"					value="${srv.hyp.vbox.5_0.xpcom.dir}/${lib.dir}" />
+	<property name="srv.hyp.vbox.5_0.xpcom.lib.dir"					value="${srv.hyp.vbox.5_0.xpcom.dir}/${lib.dirname}" />
 	<property name="srv.hyp.vbox.5_0.xpcom.class.dir"				value="${build.class.dir}/${srv.hyp.vbox.5_0.xpcom.id}" />
 	<property name="srv.hyp.vbox.5_0.xpcom.bin.dir"					value="${bin.dir}/${srv.hyp.vbox.5_0.xpcom.type}" />
 	<property name="srv.hyp.vbox.5_0.xpcom.bin.desc.file"			value="${srv.hyp.vbox.5_0.xpcom.bin.dir}/${srv.hyp.vbox.5_0.xpcom.desc.filename}" />
