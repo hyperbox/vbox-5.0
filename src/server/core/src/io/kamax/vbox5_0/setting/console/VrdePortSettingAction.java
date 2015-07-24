@@ -53,7 +53,7 @@ public class VrdePortSettingAction implements _MachineSettingAction {
       try {
          ISession sess = VBoxSessionManager.get().lockAuto(machine.getId());
          try {
-            if ((sess.getConsole().getVRDEServerInfo() != null) && (sess.getConsole().getVRDEServerInfo().getPort() > 0)) {
+            if ((sess.getConsole() != null) && (sess.getConsole().getVRDEServerInfo() != null) && (sess.getConsole().getVRDEServerInfo().getPort() > 0)) {
                return new StringSetting(MachineAttribute.VrdePort, Integer.toString(sess.getConsole().getVRDEServerInfo().getPort()));
             } else {
                return new StringSetting(MachineAttribute.VrdePort, machine.getVRDEServer().getVRDEProperty("TCP/Ports"));
