@@ -26,27 +26,27 @@ import org.virtualbox_5_0.VirtualBoxManager;
 
 public class VBox {
 
-   private static VirtualBoxManager mgr;
+    private static VirtualBoxManager mgr;
 
-   public static void set(VirtualBoxManager mgr) {
+    public static void set(VirtualBoxManager mgr) {
 
-      VBox.mgr = mgr;
-   }
+        VBox.mgr = mgr;
+    }
 
-   public static IVirtualBox get() {
-      return mgr.getVBox();
-   }
+    public static IVirtualBox get() {
+        return mgr.getVBox();
+    }
 
-   public static ISession getSession() {
-      return mgr.getSessionObject();
-   }
+    public static ISession getSession() {
+        return mgr.getSessionObject();
+    }
 
-   public static VirtualBoxManager getManager() {
-      return mgr;
-   }
+    public static VirtualBoxManager getManager() {
+        return mgr;
+    }
 
-   public static void unset() {
-      mgr = null;
-   }
+    public static void unset() {
+        mgr = null;
+    }
 
 }

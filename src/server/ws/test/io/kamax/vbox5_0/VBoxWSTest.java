@@ -27,12 +27,12 @@ import org.junit.BeforeClass;
 
 public class VBoxWSTest extends HypervisorTest {
 
-   @BeforeClass
-   public static void beforeClass() throws HyperboxException {
-      hypervisor = new VBoxWebServicesHypervisor();
-      hypervisor.setEventManager(new DummyEventManager());
+    @BeforeClass
+    public static void beforeClass() throws HyperboxException {
+        hypervisor = new VBoxWebServicesHypervisor();
+        hypervisor.setEventManager(new DummyEventManager());
 
-      HypervisorTest.init();
-   }
+        HypervisorTest.init();
+    }
 
 }

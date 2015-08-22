@@ -29,28 +29,28 @@ import javax.swing.JLabel;
 
 public class GlobalConfigureView_5_0 extends GlobalConfigureView {
 
-   private JLabel virtExLabel;
-   private JCheckBox virtExValue;
+    private JLabel virtExLabel;
+    private JCheckBox virtExValue;
 
-   public GlobalConfigureView_5_0() {
-      virtExLabel = new JLabel("Hardware Virtualization Exclusive");
-      virtExValue = new JCheckBox();
+    public GlobalConfigureView_5_0() {
+        virtExLabel = new JLabel("Hardware Virtualization Exclusive");
+        virtExValue = new JCheckBox();
 
-      getComponent().add(virtExLabel);
-      getComponent().add(virtExValue, "growx, pushx, wrap");
-   }
+        getComponent().add(virtExLabel);
+        getComponent().add(virtExValue, "growx, pushx, wrap");
+    }
 
-   @Override
-   public void update(HypervisorOut hypOut) {
-      super.update(hypOut);
-      virtExValue.setSelected(hypOut.hasSetting("vbox.global.virtEx") ? hypOut.getSetting("vbox.global.virtEx").getBoolean() : false);
-   }
+    @Override
+    public void update(HypervisorOut hypOut) {
+        super.update(hypOut);
+        virtExValue.setSelected(hypOut.hasSetting("vbox.global.virtEx") ? hypOut.getSetting("vbox.global.virtEx").getBoolean() : false);
+    }
 
-   @Override
-   public HypervisorIn getUserInput() {
-      HypervisorIn hypIn = super.getUserInput();
-      hypIn.setSetting(new BooleanSettingIO("vbox.global.virtEx", virtExValue.isSelected()));
-      return hypIn;
-   }
+    @Override
+    public HypervisorIn getUserInput() {
+        HypervisorIn hypIn = super.getUserInput();
+        hypIn.setSetting(new BooleanSettingIO("vbox.global.virtEx", virtExValue.isSelected()));
+        return hypIn;
+    }
 
 }

@@ -31,77 +31,77 @@ import org.virtualbox_5_0.VBoxException;
 import org.virtualbox_5_0.VirtualBoxManager;
 
 @Hypervisor(
-      id = VirtualBox.ID.WS_5_0,
-      typeId = VirtualBox.Type.WEB_SERVICES,
-      vendor = VirtualBox.VENDOR,
-      product = VirtualBox.PRODUCT,
-      schemes = { VirtualBox.ID.WS_5_0 })
+        id = VirtualBox.ID.WS_5_0,
+        typeId = VirtualBox.Type.WEB_SERVICES,
+        vendor = VirtualBox.VENDOR,
+        product = VirtualBox.PRODUCT,
+        schemes = { VirtualBox.ID.WS_5_0 })
 public class VBoxWebServicesHypervisor extends VBoxHypervisor {
 
-   protected final String defaultProtocol = "http";
-   protected final String defaultHost = "localhost";
-   protected final int defaultPort = 18083;
-   protected final String defaultUser = "";
-   protected final String defaultPass = "";
+    protected final String defaultProtocol = "http";
+    protected final String defaultHost = "localhost";
+    protected final int defaultPort = 18083;
+    protected final String defaultUser = "";
+    protected final String defaultPass = "";
 
-   @Override
-   protected VirtualBoxManager connect(String options) {
-      String protocol = defaultProtocol;
-      String host = defaultHost;
-      int port = defaultPort;
-      String username = defaultUser;
-      String password = defaultPass;
+    @Override
+    protected VirtualBoxManager connect(String options) {
+        String protocol = defaultProtocol;
+        String host = defaultHost;
+        int port = defaultPort;
+        String username = defaultUser;
+        String password = defaultPass;
 
-      if ((options != null) && !options.isEmpty()) {
-         try {
-            Logger.debug("Given connect options: " + options);
-            if (!options.contains("://")) {
-               options = defaultProtocol + "://" + options;
+        if ((options != null) && !options.isEmpty()) {
+            try {
+                Logger.debug("Given connect options: " + options);
+                if (!options.contains("://")) {
+                    options = defaultProtocol + "://" + options;
+                }
+                Logger.debug("Adapted raw connect options: " + options);
+                URI uri = new URI(options);
+
+                protocol = uri.getScheme();
+                host = uri.getHost();
+                if (uri.getPort() > 0) {
+                    port = uri.getPort();
+                }
+                if (uri.getUserInfo() != null) {
+                    String[] userInfo = uri.getUserInfo().split(":", 2);
+                    username = userInfo[0];
+                    if (userInfo.length == 2) {
+                        password = userInfo[1];
+                    }
+                }
+            } catch (URISyntaxException e) {
+                throw new HypervisorException("Invalid options syntax: " + e.getMessage(), e);
             }
-            Logger.debug("Adapted raw connect options: " + options);
-            URI uri = new URI(options);
+        }
 
-            protocol = uri.getScheme();
-            host = uri.getHost();
-            if (uri.getPort() > 0) {
-               port = uri.getPort();
-            }
-            if (uri.getUserInfo() != null) {
-               String[] userInfo = uri.getUserInfo().split(":", 2);
-               username = userInfo[0];
-               if (userInfo.length == 2) {
-                  password = userInfo[1];
-               }
-            }
-         } catch (URISyntaxException e) {
-            throw new HypervisorException("Invalid options syntax: " + e.getMessage(), e);
-         }
-      }
+        try {
+            Logger.debug("Using Web Services");
 
-      try {
-         Logger.debug("Using Web Services");
+            VirtualBoxManager mgr = VirtualBoxManager.createInstance(null);
 
-         VirtualBoxManager mgr = VirtualBoxManager.createInstance(null);
+            String connInfo = protocol + "://" + host + ":" + port;
+            Logger.debug("Connection info: " + connInfo);
+            Logger.debug("User: " + username);
+            Logger.debug("Password given: " + (AxStrings.isEmpty(password)));
+            mgr.connect(connInfo, username, password);
 
-         String connInfo = protocol + "://" + host + ":" + port;
-         Logger.debug("Connection info: " + connInfo);
-         Logger.debug("User: " + username);
-         Logger.debug("Password given: " + (AxStrings.isEmpty(password)));
-         mgr.connect(connInfo, username, password);
+            return mgr;
+        } catch (VBoxException e) {
+            throw new HypervisorException("Unable to connect to the Virtualbox WebServices : " + e.getMessage(), e);
+        }
+    }
 
-         return mgr;
-      } catch (VBoxException e) {
-         throw new HypervisorException("Unable to connect to the Virtualbox WebServices : " + e.getMessage(), e);
-      }
-   }
-
-   @Override
-   protected void disconnect() {
-      try {
-         vbMgr.disconnect();
-      } catch (Throwable t) {
-         Logger.warning("Error when disconnecting : " + t.getMessage());
-      }
-   }
+    @Override
+    protected void disconnect() {
+        try {
+            vbMgr.disconnect();
+        } catch (Throwable t) {
+            Logger.warning("Error when disconnecting : " + t.getMessage());
+        }
+    }
 
 }
