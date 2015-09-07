@@ -30,6 +30,7 @@ import io.kamax.hbox.comm.io.NetService_NAT_IP6_IO;
 import io.kamax.hbox.constant.NetServiceType;
 import io.kamax.hbox.hypervisor.net._NetService;
 import io.kamax.tool.logging.Logger;
+import io.kamax.vbox.VBoxNetMode;
 import io.kamax.vbox.net.VBoxAdaptor;
 import io.kamax.vbox5_0.VBox;
 import org.virtualbox_5_0.INATNetwork;
