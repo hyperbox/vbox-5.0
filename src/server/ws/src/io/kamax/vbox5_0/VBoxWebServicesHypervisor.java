@@ -81,8 +81,12 @@ public class VBoxWebServicesHypervisor extends VBoxHypervisor {
                 throw new HypervisorException("Invalid options syntax: " + e.getMessage(), e);
             }
         } else {
-            webSrv = new VBoxWebSrv(defaultHost, defaultPort, "null");
-            webSrv.start();
+            if (webSrv == null) {
+                webSrv = new VBoxWebSrv(defaultHost, defaultPort, "null");
+                webSrv.start();
+            } else {
+                Logger.warning("Got an already running VirtualBox WebServices instance!");
+            }
             port = webSrv.getPort();
         }
 
@@ -99,6 +103,7 @@ public class VBoxWebServicesHypervisor extends VBoxHypervisor {
 
             return mgr;
         } catch (VBoxException e) {
+            disconnect();
             throw new HypervisorException("Unable to connect to the Virtualbox WebServices : " + e.getMessage(), e);
         }
     }
