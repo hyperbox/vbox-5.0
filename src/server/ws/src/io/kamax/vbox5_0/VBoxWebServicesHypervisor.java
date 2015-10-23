@@ -34,10 +34,10 @@ import org.virtualbox_5_0.VirtualBoxManager;
 
 @Hypervisor(
         id = VirtualBox.ID.WS_5_0,
-        typeId = VirtualBox.Type.WEB_SERVICES,
         vendor = VirtualBox.VENDOR,
         product = VirtualBox.PRODUCT,
-        schemes = { VirtualBox.ID.WS_5_0 })
+        version = VirtualBox.Version.v5_0,
+        typeId = VirtualBox.Type.WEB_SERVICES)
 public class VBoxWebServicesHypervisor extends VBoxHypervisor {
 
     private _VBoxWebSrv webSrv;

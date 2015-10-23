@@ -28,10 +28,10 @@ import org.virtualbox_5_0.VirtualBoxManager;
 
 @Hypervisor(
         id = VirtualBox.ID.XPCOM_5_0,
-        typeId = VirtualBox.Type.XPCOM,
         vendor = VirtualBox.VENDOR,
         product = VirtualBox.PRODUCT,
-        schemes = { VirtualBox.ID.XPCOM_5_0 })
+        version = VirtualBox.Version.v5_0,
+        typeId = VirtualBox.Type.XPCOM)
 public final class VBoxXpcomHypervisor extends VBoxHypervisor {
 
     @Override
