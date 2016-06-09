@@ -3,7 +3,7 @@
 	<path>vbox-5_0-ws</path>
 	<name>Virtualbox 5.0 WebService Connector</name>
 	<desc>This module provides the WebServices connector for VirtualBox 5.0</desc>
-	<version>0.1.1</version>
+	<version>0.1.2</version>
 	<vendor>Kamax.io</vendor>
 	<url>http://kamax.io/hbox/</url>
 	<providers>
