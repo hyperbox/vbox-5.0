@@ -1,0 +1,22 @@
+def modType = 'gui'
+def modId = "vbox-${gradle.vboxVersion}-${modType}"
+
+apply plugin: 'java'
+
+dependencies {
+    compileOnly 'io.kamax:hbox-client-gui:latest'
+    compile 'io.kamax:hbox-vbox-common-client:latest'
+}
+
+def binPath = project.buildDir.toPath().resolve('bin')
+def jarPath = binPath.resolve(modId)
+
+task distBinJar(type: Copy) {
+    from jar
+    from configurations.compile
+    into jarPath
+}
+
+task distBin {
+    dependsOn distBinJar
+}

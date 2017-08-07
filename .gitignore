@@ -1,7 +1,7 @@
-/out/
+# IDEs
+.idea/
 
-src/client/gui/.settings/
-src/server/core/.settings/
-src/server/ws/.settings/
-src/server/xpcom/.settings/
-
+# Build
+.gradle/
+build/
+out/

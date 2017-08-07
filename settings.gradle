@@ -1,0 +1,9 @@
+gradle.ext.vboxVersion = '5_0'
+
+rootProject.name = "hbox-vbox-${gradle.vboxVersion}"
+
+include 'modules/server/core', 'modules/server/ws', 'modules/server/xpcom', 'modules/client/gui'
+project(':modules/server/core').name = "hbox-vbox-${gradle.vboxVersion}-server-core"
+project(':modules/server/ws').name = "hbox-vbox-${gradle.vboxVersion}-server-ws"
+project(':modules/server/xpcom').name = "hbox-vbox-${gradle.vboxVersion}-server-xpcom"
+project(':modules/client/gui').name = "hbox-vbox-${gradle.vboxVersion}-client-gui"

@@ -1,0 +1,7 @@
+apply plugin: 'java'
+
+dependencies {
+    compileOnly files('lib/vboxjws.jar')
+    compileOnly 'io.kamax:hbox-server-api:latest'
+    compile 'io.kamax:hbox-vbox-common-server:latest'
+}

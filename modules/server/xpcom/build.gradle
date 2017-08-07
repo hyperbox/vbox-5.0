@@ -1,0 +1,29 @@
+def modType = 'xpcom'
+def modId = "vbox-${gradle.vboxVersion}-${modType}"
+
+apply plugin: 'java'
+
+dependencies {
+    compileOnly 'io.kamax:hbox-server-api:latest'
+    compileOnly files("lib/vboxj${modType}.jar")
+    compile project(":hbox-vbox-${gradle.vboxVersion}-server-core")
+}
+
+def binPath = project.buildDir.toPath().resolve('bin')
+def jarPath = binPath.resolve(modId)
+
+task distBinJar(type: Copy) {
+    from jar
+    from project.file("lib/vboxj${modType}.jar")
+    from configurations.compile
+    into jarPath
+}
+
+task distBinMeta(type: Copy) {
+    from project.file("src/package/${modId}.xml")
+    into binPath
+}
+
+task distBin {
+    dependsOn distBinJar, distBinMeta
+}
