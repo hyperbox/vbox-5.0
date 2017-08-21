@@ -4,7 +4,7 @@ def modId = "vbox-${gradle.vboxVersion}-${modType}"
 apply plugin: 'java'
 
 dependencies {
-    compileOnly 'io.kamax:hbox-server-api:latest'
+    compileOnly 'io.kamax:hbox-server-api:0.0.13-2-gcf752f2'
     compileOnly files("lib/vboxj${modType}.jar")
     compile project(":hbox-vbox-${gradle.vboxVersion}-server-core")
 }

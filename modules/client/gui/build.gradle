@@ -4,8 +4,8 @@ def modId = "vbox-${gradle.vboxVersion}-${modType}"
 apply plugin: 'java'
 
 dependencies {
-    compileOnly 'io.kamax:hbox-client-gui:latest'
-    compile 'io.kamax:hbox-vbox-common-client:latest'
+    compileOnly 'io.kamax:hbox-client-gui:0.0.14'
+    compile 'io.kamax:hbox-vbox-common-client:0.1.2-9-g44abe81'
 }
 
 def binPath = project.buildDir.toPath().resolve('bin')
