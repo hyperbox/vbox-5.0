@@ -1,0 +1,52 @@
+import java.nio.file.Paths
+
+def modType = 'ws'
+def modId = "vbox-${gradle.vboxVersion}-${modType}"
+
+apply plugin: 'java'
+
+sourceSets {
+    testIntegration {
+        compileClasspath += sourceSets.test.compileClasspath
+        runtimeClasspath += sourceSets.test.runtimeClasspath
+    }
+}
+
+configurations {
+    testIntegrationCompile.extendsFrom testCompile
+    testIntegrationRuntime.extendsFrom testRuntime
+}
+
+dependencies {
+    compileOnly 'io.kamax:hbox-server-api:0.0.13-2-gcf752f2'
+    compileOnly files("lib/vboxj${modType}.jar")
+    compile project(":hbox-vbox-${gradle.vboxVersion}-server-core")
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'io.kamax:hbox-server-api-test:0.0.13-2-gcf752f2'
+}
+
+task testIntegration(type: Test) {
+    description = "Integration tests which require a VirtualBox installation"
+    testClassesDir = sourceSets.testIntegration.output.classesDir
+    classpath = sourceSets.testIntegration.runtimeClasspath
+}
+
+def binPath = Paths.get(System.getProperty("server.build.bin.modules", project.buildDir.toPath().resolve('bin').toString()))
+def jarPath = binPath.resolve(modId)
+
+task distBinJar(type: Copy) {
+    from jar
+    from project.file("lib/vboxj${modType}.jar")
+    from configurations.compile
+    into jarPath
+}
+
+task distBinMeta(type: Copy) {
+    from project.file("src/package/${modId}.xml")
+    into binPath
+}
+
+task distBin {
+    dependsOn distBinJar, distBinMeta
+}

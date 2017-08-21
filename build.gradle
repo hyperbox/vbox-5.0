@@ -1,0 +1,24 @@
+plugins {
+    id 'base'
+    id 'com.palantir.git-version' version '0.8.0'
+}
+
+evaluationDependsOnChildren()
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.palantir.git-version'
+
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+
+    group = 'io.kamax'
+    version = gitVersion()
+
+    repositories {
+        maven { url "https://kamax.io/maven/releases" }
+        maven { url "https://kamax.io/maven/snapshots" }
+        mavenLocal()
+        mavenCentral()
+    }
+}
