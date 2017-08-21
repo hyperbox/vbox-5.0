@@ -1,13 +1,18 @@
-plugins {
-    id 'base'
-    id 'com.palantir.git-version' version '0.8.0'
+apply plugin: 'base'
+
+String gitVersion() {
+    ByteArrayOutputStream out = new ByteArrayOutputStream()
+    exec {
+        commandLine = [ 'git', 'describe', '--always', '--dirty' ]
+        standardOutput = out
+    }
+    return out.toString().replace(System.lineSeparator(), '')
 }
 
 evaluationDependsOnChildren()
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'com.palantir.git-version'
 
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
