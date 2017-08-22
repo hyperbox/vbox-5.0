@@ -32,6 +32,6 @@ task distBinMeta(type: Copy) {
     into binPath
 }
 
-task distBin {
+task distBinLinux {
     dependsOn distBinJar, distBinMeta
 }

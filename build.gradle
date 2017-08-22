@@ -27,3 +27,11 @@ subprojects {
         mavenCentral()
     }
 }
+
+task distBinLinux() {
+    // placeholder
+}
+
+task distBinWin() {
+    // placeholder
+}
