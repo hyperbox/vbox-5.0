@@ -1,3 +1,13 @@
+static String getSysProp(String value, String fallback) {
+    // This is required as there is a length limitation on System.properties.getProperty(a,b)
+
+    if (!System.properties.containsKey(value)) {
+        return fallback
+    }
+
+    return System.properties.get(value)
+}
+
 import java.nio.file.Paths
 
 def modType = 'xpcom'
@@ -12,8 +22,8 @@ dependencies {
 }
 
 def binPath = Paths.get(
-        System.getProperty("server.build.bin.linux.modules",
-                System.getProperty("server.build.bin.modules",
+        getSysProp("server.build.bin.linux.modules",
+                getSysProp("server.build.bin.modules",
                         project.buildDir.toPath().resolve('bin').toString()
                 )
         )
