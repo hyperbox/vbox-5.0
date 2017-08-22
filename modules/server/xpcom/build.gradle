@@ -11,7 +11,13 @@ dependencies {
     compile project(":hbox-vbox-${gradle.vboxVersion}-server-core")
 }
 
-def binPath = Paths.get(System.getProperty("server.build.bin.modules", project.buildDir.toPath().resolve('bin').toString()))
+def binPath = Paths.get(
+        System.getProperty("server.build.bin.linux.modules",
+                System.getProperty("server.build.bin.modules",
+                        project.buildDir.toPath().resolve('bin').toString()
+                )
+        )
+)
 def jarPath = binPath.resolve(modId)
 
 task distBinJar(type: Copy) {
