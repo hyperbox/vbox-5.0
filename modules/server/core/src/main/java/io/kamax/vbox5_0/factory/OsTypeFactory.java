@@ -20,6 +20,7 @@
 
 package io.kamax.vbox5_0.factory;
 
+import io.kamax.hbox.comm.io.StringSettingIO;
 import io.kamax.hbox.comm.io.factory.SettingIoFactory;
 import io.kamax.hbox.constant.*;
 import io.kamax.hbox.data.Device;
@@ -77,6 +78,7 @@ public final class OsTypeFactory {
         vm.setSetting(SettingIoFactory.get(new FirmwareSetting(Mappings.get(guestOs.getRecommendedFirmware()))));
         vm.setSetting(SettingIoFactory.get(new HpetSetting(guestOs.getRecommendedHPET())));
         vm.setSetting(SettingIoFactory.get(new HwVirtExExclSetting(guestOs.getRecommendedVirtEx())));
+        vm.setSetting(new StringSettingIO(MachineAttribute.VrdePort, "3390-65535"));
 
         if (guestOs.getRecommendedFloppy()) {
             Device dev = new Device();
